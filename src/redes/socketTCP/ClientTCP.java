@@ -28,7 +28,7 @@ public class ClientTCP {
 
         modifiedSentence = inFromServer.readLine();
 
-        System.out.println("FROM SERVER: " + modifiedSentence);
+        System.out.println("TRADUÇÃO: " + modifiedSentence);
 
         clientSocket.close();
     }
