@@ -1,4 +1,4 @@
-package socketTCP;
+package redes.socketTCP;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -6,8 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.HashMap;
-import java.util.Map;
+import redes.Dicionario;
 
 public class HostTCP {
 
@@ -15,19 +14,7 @@ public class HostTCP {
         {
             String clientSentence;
             String capitalizedSentence;
-            Map<String, String> dicionario = new HashMap<>(0);
-
-
-            // definindo dicionário com o tema de redes:
-            dicionario.put("porta", "gateway");
-            dicionario.put("redes", "network");
-            dicionario.put("requisição", "request");
-            dicionario.put("resposta", "response");
-            dicionario.put("cabeçalho", "header");
-
-
-            // adicionando chave e valor para casos de erro:
-            dicionario.put("erro", "Nao conheco esta palavra.");
+            Dicionario dicionario = new Dicionario();
 
             ServerSocket welcomeSocket = new ServerSocket(8080);
 
@@ -42,11 +29,13 @@ public class HostTCP {
 
                 clientSentence = inFromClient.readLine();
 
-                if (dicionario.get(clientSentence) != null) {
-                    capitalizedSentence = dicionario.get(clientSentence) + "\n";
+                String traducao = dicionario.traduzir(clientSentence);
+
+                if (traducao != null) {
+                    capitalizedSentence = traducao + "\n";
                 }
                 else {
-                    capitalizedSentence = dicionario.get("erro") + "\n";
+                    capitalizedSentence = "Nao conheco esta palavra." + "\n";
                 }
                 outToClient.writeBytes(capitalizedSentence);
             }

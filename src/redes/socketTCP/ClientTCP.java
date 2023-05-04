@@ -1,4 +1,4 @@
-package socketTCP;
+package redes.socketTCP;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
