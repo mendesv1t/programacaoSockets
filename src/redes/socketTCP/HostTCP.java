@@ -35,7 +35,7 @@ public class HostTCP {
                     capitalizedSentence = traducao + "\n";
                 }
                 else {
-                    capitalizedSentence = "Nao conheco esta palavra." + "\n";
+                    capitalizedSentence = "Não conheço a tradução para esta palavra." + "\n";
                 }
                 outToClient.writeBytes(capitalizedSentence);
             }

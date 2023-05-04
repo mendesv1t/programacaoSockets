@@ -34,7 +34,7 @@ public class HostUDP {
                 capitalizedSentence = traducao + "\n";
             }
             else {
-                capitalizedSentence = "Nao conheço esta palavra." + "\n#";
+                capitalizedSentence = "Não conheço a tradução para esta palavra." + "\n#";
             }
 
             sendData = capitalizedSentence.getBytes();
