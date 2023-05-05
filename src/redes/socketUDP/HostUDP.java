@@ -1,17 +1,19 @@
 package redes.socketUDP;
 
 import redes.Dicionario;
+import redes.util.BytesUtil;
 
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.Arrays;
 
 public class HostUDP {
     public static void main(String args[]) throws Exception {
 
         String capitalizedSentence;
 
-        DatagramSocket serverSocket = new DatagramSocket(9876);
+        DatagramSocket serverSocket = new DatagramSocket(3333);
 
         byte[] receiveData = new byte[1024];
         byte[] sendData;
@@ -20,11 +22,11 @@ public class HostUDP {
             Dicionario dicionario = new Dicionario();
 
             DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
-
             serverSocket.receive(receivePacket);
+
             System.out.println("Nova conexão de: " + receivePacket.getAddress().getHostName() + ":" + receivePacket.getPort());
 
-            String sentence = new String(receivePacket.getData());
+            String sentence = new String(BytesUtil.trim(receivePacket.getData()));
             InetAddress IPAddress = receivePacket.getAddress();
             int port = receivePacket.getPort();
 
@@ -34,7 +36,7 @@ public class HostUDP {
                 capitalizedSentence = traducao + "\n";
             }
             else {
-                capitalizedSentence = "Não conheço a tradução para esta palavra." + "\n#";
+                capitalizedSentence = "Não conheço a tradução para esta palavra." + "\n";
             }
 
             sendData = capitalizedSentence.getBytes();

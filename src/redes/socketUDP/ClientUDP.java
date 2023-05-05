@@ -1,5 +1,7 @@
 package redes.socketUDP;
 
+import redes.util.BytesUtil;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -26,14 +28,14 @@ public class ClientUDP {
         String sentence = inFromUser.readLine();
         sendData = sentence.getBytes();
 
-        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 9876);
+        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 3333);
         clientSocket.send(sendPacket);
 
         DatagramPacket receivePacket = new DatagramPacket(receivedData, receivedData.length);
         clientSocket.receive(receivePacket);
 
-        String modifiedSentence = new String(receivePacket.getData());
-        System.out.println("TRADUÇÃO: " + modifiedSentence.substring(0, modifiedSentence.indexOf("#")));
+        String modifiedSentence = new String(BytesUtil.trim(receivePacket.getData()));
+        System.out.println("TRADUÇÃO: " + modifiedSentence);
         clientSocket.close();
 
     }
