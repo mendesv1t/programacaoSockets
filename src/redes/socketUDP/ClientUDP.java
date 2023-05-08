@@ -18,7 +18,7 @@ public class ClientUDP {
 
         DatagramSocket clientSocket = new DatagramSocket();
 
-        InetAddress IPAddress = InetAddress.getByName("localhost");
+        InetAddress IPAddress = InetAddress.getByName("127.0.0.1");
 
         byte[] sendData;
         byte[] receivedData = new byte[1024];
@@ -28,7 +28,7 @@ public class ClientUDP {
         String sentence = inFromUser.readLine();
         sendData = sentence.getBytes();
 
-        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 3333);
+        DatagramPacket sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 8080);
         clientSocket.send(sendPacket);
 
         DatagramPacket receivePacket = new DatagramPacket(receivedData, receivedData.length);

@@ -13,7 +13,7 @@ public class HostUDP {
 
         String capitalizedSentence;
 
-        DatagramSocket serverSocket = new DatagramSocket(3333);
+        DatagramSocket serverSocket = new DatagramSocket(8080);
 
         byte[] receiveData = new byte[1024];
         byte[] sendData;

@@ -14,7 +14,7 @@ public class ClientTCP {
 
         BufferedReader inFromUser = new BufferedReader(new InputStreamReader(System.in));
 
-        Socket clientSocket = new Socket("localhost", 8080);
+        Socket clientSocket = new Socket("127.0.0.1", 8080);
 
         DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
 
