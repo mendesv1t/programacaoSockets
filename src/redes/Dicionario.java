@@ -8,7 +8,7 @@ public class Dicionario {
 
     public Dicionario() {
         this.palavras.put("porta", "gateway");
-        this.palavras.put("redes", "network");
+        this.palavras.put("rede", "network");
         this.palavras.put("requisição", "request");
         this.palavras.put("resposta", "response");
         this.palavras.put("cabeçalho", "header");
